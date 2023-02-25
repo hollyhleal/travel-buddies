@@ -23,7 +23,7 @@
         <!-- Button trigger modal -->
         <button
           type="button"
-          class="btn btn-primary"
+          class="btn btn-primary col"
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
         >
@@ -38,7 +38,7 @@
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
         >
-          <div class="modal-dialog">
+          <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">
@@ -52,20 +52,20 @@
                 ></button>
               </div>
               <div class="modal-body">
-                <label class="form-label" for="typeName">Name</label>
+                <label class="form-label" for="typeName">Name:</label>
                 <input
                   type="name"
                   id="typeName"
                   class="form-control form-control-lg"
                 />
-                <label class="form-label" for="typeEmail">Email</label>
+                <label class="form-label" for="typeEmail">Email:</label>
                 <input
                   type="email"
                   id="typeEmail"
                   class="form-control form-control-lg"
                 />
                 <label class="form-label" for="typeDestination"
-                  >Destination</label
+                  >Destination:</label
                 >
                 <input
                   type="text"
@@ -100,9 +100,9 @@
         </div>
       </div>
       <!-- app page containing divs with cards for each api -->
-      <div class="app-page">
-        <h2>Grab a drink!</h2>
-        <div class="api-1 col-lg-3">
+      <div class="app-page row hide">
+        <div class="api-1 col-3">
+          <h4>Grab a drink!</h4>
           <div class="card" style="width: 18rem">
             <!-- <img src="..." class="card-img-top" alt="..." /> -->
             <div class="card-body">
@@ -140,43 +140,65 @@
             </div>
           </div>
         </div>
-        <div class="api-2 col-lg-9">
-          <div class="card" style="width: 18rem">
-            <!-- <img src="..." class="card-img-top" alt="..." /> -->
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
+        <div class="api-2 col-9">
+          <h4>Attend an event!</h4>
+          <div class="row justify-content-between">
+            <div class="card" style="width: 18rem">
+              <!-- <img src="..." class="card-img-top" alt="..." /> -->
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">An item</li>
+                <li class="list-group-item">A second item</li>
+                <li class="list-group-item">A third item</li>
+              </ul>
+              <div class="card-body">
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+              </div>
             </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">An item</li>
-              <li class="list-group-item">A second item</li>
-              <li class="list-group-item">A third item</li>
-            </ul>
-            <div class="card-body">
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
+            <div class="card" style="width: 18rem">
+              <!-- <img src="..." class="card-img-top" alt="..." /> -->
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">An item</li>
+                <li class="list-group-item">A second item</li>
+                <li class="list-group-item">A third item</li>
+              </ul>
+              <div class="card-body">
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+              </div>
             </div>
-          </div>
-          <div class="card" style="width: 18rem">
-            <!-- <img src="..." class="card-img-top" alt="..." /> -->
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">An item</li>
-              <li class="list-group-item">A second item</li>
-              <li class="list-group-item">A third item</li>
-            </ul>
-            <div class="card-body">
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
+            <div class="card" style="width: 18rem">
+              <!-- <img src="..." class="card-img-top" alt="..." /> -->
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">An item</li>
+                <li class="list-group-item">A second item</li>
+                <li class="list-group-item">A third item</li>
+              </ul>
+              <div class="card-body">
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+              </div>
             </div>
           </div>
         </div>

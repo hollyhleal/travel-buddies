@@ -1,4 +1,6 @@
 var goBtn = $("#goBtn");
+var appPage = $(".app-page");
+var loginPage = $(".login-page");
 var brewName0 = $("#brewName0");
 var brewName1 = $("#brewName1");
 var brewName2 = $("#brewName2");
@@ -12,6 +14,8 @@ var brewWebsite2 = $("#brewWebsite2");
 goBtn.on("click", requestBreweries);
 
 function requestBreweries() {
+  loginPage.addClass("hide");
+  appPage.removeClass("hide");
   var city = $("#typeDestination").val();
   var breweryURL =
     "https://api.openbrewerydb.org/breweries?by_city=" + city + "&per_page=3";
@@ -40,9 +44,6 @@ function requestBreweries() {
           brewAddress2.text(data[i].street);
           brewWebsite2.text(data[i].website_url);
         }
-        // brewName.text(data[i].name);
-        // brewAddress.text(data[i].street);
-        // brewWebsite.text(data[i].website_url);
       }
     });
 }

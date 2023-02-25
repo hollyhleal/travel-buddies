@@ -23,6 +23,9 @@ function requestBreweries() {
     })
     .then(function (data) {
       console.log(data);
+      if (city === "") {
+        return;
+      }
       for (let i = 0; i < data.length; i++) {
         if (i === 0) {
           brewName0.text(data[i].name);

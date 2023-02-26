@@ -59,16 +59,51 @@ goBtn.on("click", requestEvents);
 
 //old code
 function requestEvents() {
-    var cityId = $("#typeDestination").val();
-    var dateStart = $("#startDate").val();
-    // var newstartDate = dateStart.moment().format('YYYY-MM-DD');
-    var dateEnd = $("#endDate").val();
-    var ticketURL =
+  var cityId = $("#typeDestination").val();
+  var dateStart = $("#startDate").val();
+  // var newstartDate = dateStart.moment().format('YYYY-MM-DD');
+  var dateEnd = $("#endDate").val();
+  var ticketURL =
 
-        // "https://app.ticketmaster.com/discovery/v2/events.json?apikey=AGWa5vWEgQZJJbVa9ZHcAxkl7H76w1f4&sort=date,asc" + "&city=" + cityId + "&countryCode=US" + "&startDateTime=" + dateStart;
-        "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=AGWa5vWEgQZJJbVa9ZHcAxkl7H76w1f4&" +
-        "&city=" + cityId + "&starteDateTime=" + dateStart;
-    console.log(dateStart);
-    console.log(dateEnd);
-    console.log(ticketURL)
+    // "https://app.ticketmaster.com/discovery/v2/events.json?apikey=AGWa5vWEgQZJJbVa9ZHcAxkl7H76w1f4&sort=date,asc" + "&city=" + cityId + "&countryCode=US" + "&startDateTime=" + dateStart;
+    "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=AGWa5vWEgQZJJbVa9ZHcAxkl7H76w1f4&" +
+    "&city=" + cityId + "&starteDateTime=" + dateStart;
+  console.log(dateStart);
+  console.log(dateEnd);
+  console.log(ticketURL)
+
+
+  fetch(ticketURL)
+    .then(function (response) {
+      // console.log(response);
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+
+      // first event
+      for (i = 0; i < 4; i++) {
+        var mainEvent0 = data._embedded.events[i].name;
+        // console.log(mainEvent0);
+        var maineventdate0 = data._embedded.events[1].dates.start.localDate;
+        // console.log(maineventdate0);
+        var venue = data._embedded.events[i]._embedded.venues[0].name;
+        // console.log(venue);
+        var purchaseURL = data._embedded.events[i].url;
+        // console.log(purchaseURL)
+
+        // using jquery to tie the variables.
+        $("#event" + i).html(mainEvent0);
+        $("#date" + i).html(maineventdate0);
+        $("#venue" + i).html(venue);
+        $("#purchase-tickets" + i).html(purchaseURL);
+        // console.log(mainEvent0);
+        // add date parameter to url (&=)
+        // var for date range
+
+      }
+
+
+      // document.getElementById("").addEventListener("click", purchaseURL);
+    });
 }

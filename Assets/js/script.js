@@ -47,3 +47,28 @@ function requestBreweries() {
       }
     });
 }
+
+var ticketApiKey = "AGWa5vWEgQZJJbVa9ZHcAxkl7H76w1f4";
+// var maineventdate0 = $("#date-0");
+// var mainDescription0 = $("#description-0");
+var page = 0;
+var today = new Date()
+console.log(today)
+// console.log(dateI)
+goBtn.on("click", requestEvents);
+
+//old code
+function requestEvents() {
+    var cityId = $("#typeDestination").val();
+    var dateStart = $("#startDate").val();
+    // var newstartDate = dateStart.moment().format('YYYY-MM-DD');
+    var dateEnd = $("#endDate").val();
+    var ticketURL =
+
+        // "https://app.ticketmaster.com/discovery/v2/events.json?apikey=AGWa5vWEgQZJJbVa9ZHcAxkl7H76w1f4&sort=date,asc" + "&city=" + cityId + "&countryCode=US" + "&startDateTime=" + dateStart;
+        "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=AGWa5vWEgQZJJbVa9ZHcAxkl7H76w1f4&" +
+        "&city=" + cityId + "&starteDateTime=" + dateStart;
+    console.log(dateStart);
+    console.log(dateEnd);
+    console.log(ticketURL)
+}

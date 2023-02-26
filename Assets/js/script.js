@@ -10,8 +10,19 @@ var brewAddress2 = $("#brewAddress2");
 var brewWebsite0 = $("#brewWebsite0");
 var brewWebsite1 = $("#brewWebsite1");
 var brewWebsite2 = $("#brewWebsite2");
+var storedTraveler = [];
+var storedTravInfo = {};
 
 goBtn.on("click", requestBreweries);
+
+function modalInput() {
+  var travName = $("#typeName").val();
+  var travEmail = $("#typeEmail").val();
+  var travDestination = $("#typeDestination").val();
+  var travDateStart = $("#startDate").val();
+  var travDateEnd = $("#endDate").val();
+  console.log(travName, travEmail, travDestination, travDateStart, travDateEnd);
+}
 
 function requestBreweries() {
   loginPage.addClass("hide");
@@ -62,12 +73,13 @@ function requestEvents() {
   // var newstartDate = dateStart.moment().format('YYYY-MM-DD');
   var dateEnd = $("#endDate").val();
   var ticketURL =
-    // "https://app.ticketmaster.com/discovery/v2/events.json?apikey=AGWa5vWEgQZJJbVa9ZHcAxkl7H76w1f4&sort=date,asc" + "&city=" + cityId + "&countryCode=US" + "&startDateTime=" + dateStart;
-    "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=AGWa5vWEgQZJJbVa9ZHcAxkl7H76w1f4&" +
+    "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US" +
     "&city=" +
     cityId +
-    "&starteDateTime=" +
-    dateStart;
+    "&eventdate_from=" +
+    dateStart +
+    "T00:00:00Z&apikey=" +
+    ticketApiKey;
   console.log(dateStart);
   console.log(dateEnd);
   console.log(ticketURL);
@@ -84,7 +96,7 @@ function requestEvents() {
       for (i = 0; i < 4; i++) {
         var mainEvent0 = data._embedded.events[i].name;
         // console.log(mainEvent0);
-        var maineventdate0 = data._embedded.events[1].dates.start.localDate;
+        var maineventdate0 = data._embedded.events[i].dates.start.localDate;
         // console.log(maineventdate0);
         var venue = data._embedded.events[i]._embedded.venues[0].name;
         // console.log(venue);

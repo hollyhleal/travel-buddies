@@ -1,7 +1,22 @@
+*{
+    font-family: 'Spinnaker', sans-serif;
+}
+
+:root {
+    --DarkBlue: #152A38;
+    --Blue: #29435C;
+    --Green: #556E53;
+    --Steel: #D1D4C9;
+}
+
 body {
   background-image: url(https://images.unsplash.com/photo-1615237002240-8bfecfbfd7fc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80);
   background-color: blanchedalmond;
   text-align: center;
+}
+
+h1 {
+    padding: 30px;
 }
 
 .hide {

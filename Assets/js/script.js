@@ -17,8 +17,7 @@ function requestBreweries() {
   loginPage.addClass("hide");
   appPage.removeClass("hide");
   var city = $("#typeDestination").val();
-  var breweryURL =
-    "https://api.openbrewerydb.org/breweries?by_city=" + city + "&per_page=3";
+  var breweryURL = "https://api.openbrewerydb.org/breweries?by_city=" + city;
 
   fetch(breweryURL)
     .then(function (response) {
@@ -30,48 +29,48 @@ function requestBreweries() {
       if (city === "") {
         return;
       }
-      for (let i = 0; i < data.length; i++) {
+      for (let i = 0; i < 3; i++) {
         if (i === 0) {
           brewName0.text(data[i].name);
           brewAddress0.text(data[i].street);
           brewWebsite0.text(data[i].website_url);
+          brewWebsite0.attr("href", data[i].website_url);
+          brewWebsite0.attr("target", "_blank");
         } else if (i === 1) {
           brewName1.text(data[i].name);
           brewAddress1.text(data[i].street);
           brewWebsite1.text(data[i].website_url);
-        } else {
+          brewWebsite1.attr("href", data[i].website_url);
+          brewWebsite1.attr("target", "_blank");
+        } else if (i === 2) {
           brewName2.text(data[i].name);
           brewAddress2.text(data[i].street);
           brewWebsite2.text(data[i].website_url);
+          brewWebsite2.attr("href", data[i].website_url);
+          brewWebsite2.attr("target", "_blank");
         }
       }
     });
 }
 
 var ticketApiKey = "AGWa5vWEgQZJJbVa9ZHcAxkl7H76w1f4";
-// var maineventdate0 = $("#date-0");
-// var mainDescription0 = $("#description-0");
-var page = 0;
-var today = new Date()
-console.log(today)
-// console.log(dateI)
 goBtn.on("click", requestEvents);
 
-//old code
 function requestEvents() {
   var cityId = $("#typeDestination").val();
   var dateStart = $("#startDate").val();
   // var newstartDate = dateStart.moment().format('YYYY-MM-DD');
   var dateEnd = $("#endDate").val();
   var ticketURL =
-
     // "https://app.ticketmaster.com/discovery/v2/events.json?apikey=AGWa5vWEgQZJJbVa9ZHcAxkl7H76w1f4&sort=date,asc" + "&city=" + cityId + "&countryCode=US" + "&startDateTime=" + dateStart;
     "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=AGWa5vWEgQZJJbVa9ZHcAxkl7H76w1f4&" +
-    "&city=" + cityId + "&starteDateTime=" + dateStart;
+    "&city=" +
+    cityId +
+    "&starteDateTime=" +
+    dateStart;
   console.log(dateStart);
   console.log(dateEnd);
-  console.log(ticketURL)
-
+  console.log(ticketURL);
 
   fetch(ticketURL)
     .then(function (response) {
@@ -100,9 +99,7 @@ function requestEvents() {
         // console.log(mainEvent0);
         // add date parameter to url (&=)
         // var for date range
-
       }
-
 
       // document.getElementById("").addEventListener("click", purchaseURL);
     });

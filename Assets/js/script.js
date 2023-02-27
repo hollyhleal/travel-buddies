@@ -122,27 +122,48 @@ function requestEvents() {
       })
       // console.log(startResults)
 
-      // first event
-      for (i = 0; i < 4; i++) {
-        var mainEvent0 = data._embedded.events[i].name;
-        // console.log(mainEvent0);
-        var maineventdate0 = data._embedded.events[i].dates.start.localDate;
-        // console.log(maineventdate0);
-        var venue = data._embedded.events[i]._embedded.venues[0].name;
-        // console.log(venue);
-        var purchaseURL = data._embedded.events[i].url;
-        // console.log(purchaseURL)
+      if (startResults.length === 0) {
+        $("#event0").text("Sorry, no events found for those dates.");
+        $("#event1").text("Sorry, no events found for those dates.");
+        $("#event2").text("Sorry, no events found for those dates.");
 
-        // using jquery to tie the variables.
-        $("#event" + i).html(mainEvent0);
-        $("#date" + i).html(maineventdate0);
-        $("#venue" + i).html(venue);
-        $("#purchase-tickets" + i).html(purchaseURL);
-        // console.log(mainEvent0);
-        // add date parameter to url (&=)
-        // var for date range
+      } else {
+
+        //this loop will target and declare each variable
+        for (i = 0; i < 3; i++) {
+
+          var mainEvent0 = startResults[i].name
+          // console.log(mainEvent0);
+
+          var maineventdate0 = startResults[i].dates.start.localDate;
+          // console.log(maineventdate0);
+
+          var venue = startResults[i]._embedded.venues[0].name;
+          // console.log(venue);
+
+          var purchaseURL = startResults[i].url
+          // console.log(purchaseURL)
+
+          //this will target the variables and will display to html IDs
+          $("#event" + i).html(mainEvent0);
+          $("#date" + i).html(maineventdate0);
+          $("#venue" + i).html(venue);
+
+          //this will replace the url text with a new string
+          document.querySelector("#purchase-tickets" + i).value = purchaseURL
+          document.querySelector("#purchase-tickets" + i).innerHTML = `Click Here for more info`
+          var goBtn = $("#purchase-tickets" + i);
+          goBtn.on("click", openLink);
+
+
+        }
       }
-
-      // document.getElementById("").addEventListener("click", purchaseURL);
     });
+
+}
+
+// this function is to open the link and use a separate tab
+function openLink(value) {
+  console.log(value.target.value)
+  window.open(value.target.value)
 }

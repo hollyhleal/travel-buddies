@@ -25,6 +25,21 @@ h1 {
   padding: 30px;
 }
 
+.btn {
+    background-color: var(--DarkBlue);
+    border: var(--DarkBlue);
+}
+
+.btn:hover {
+    background-color: var(--Blue);
+    border: var(--Blue);
+}
+
+#exampleModalLabel {
+    margin-left: 25%;
+    line-height: 5px;
+}
+
 h4 {
   color: var(--DarkBlue);
 }

@@ -17,11 +17,11 @@ goBtn.on("click", requestBreweries);
 
 function modalInput() {
   var travName = $("#typeName").val();
-  var travEmail = $("#typeEmail").val();
+  // var travEmail = $("#typeEmail").val();
   var travDestination = $("#typeDestination").val();
-  var travDateStart = $("#startDate").val();
-  var travDateEnd = $("#endDate").val();
-  console.log(travName, travEmail, travDestination, travDateStart, travDateEnd);
+  // var travDateStart = $("#startDate").val();
+  // var travDateEnd = $("#endDate").val();
+  // console.log(travName, travEmail, travDestination, travDateStart, travDateEnd);
 }
 
 function requestBreweries() {
@@ -127,4 +127,14 @@ function requestEvents() {
 function openLink(value) {
   console.log(value.target.value)
   window.open(value.target.value)
+}
+
+const toastTrigger = document.getElementById("liveToastBtn");
+const toastLiveExample = document.getElementById("liveToast");
+if (toastTrigger) {
+  toastTrigger.addEventListener("click", () => {
+    const toast = new bootstrap.Toast(toastLiveExample);
+
+    toast.show();
+  });
 }

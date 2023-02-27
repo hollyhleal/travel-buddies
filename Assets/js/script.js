@@ -1,4 +1,5 @@
 var goBtn = $("#goBtn");
+var input = $("input");
 var appPage = $(".app-page");
 var loginPage = $(".login-page");
 var brewName0 = $("#brewName0");
@@ -46,14 +47,17 @@ function displayToast() {
 
 //Utilize the BreweryDB API to access breweries by city and display 3 of the options from the returned array onto cards for the user.
 function requestBreweries() {
-  loginPage.addClass("hide");
-  appPage.removeClass("hide");
-  var city = $("#typeDestination").val();
-  var breweryURL = "https://api.openbrewerydb.org/breweries?by_city=" + city;
-
-  fetch(breweryURL)
-    .then(function (response) {
-      console.log(response);
+    if(input.val() === "") {
+        return;
+    } else {
+        loginPage.addClass("hide");
+        appPage.removeClass("hide");
+        var city = $("#typeDestination").val();
+        var breweryURL = "https://api.openbrewerydb.org/breweries?by_city=" + city;
+        
+        fetch(breweryURL)
+        .then(function (response) {
+            console.log(response);
       return response.json();
     })
     .then(function (data) {
@@ -63,27 +67,28 @@ function requestBreweries() {
       }
       for (let i = 0; i < 3; i++) {
         if (i === 0) {
-          brewName0.text(data[i].name);
-          brewAddress0.text(data[i].street);
-          brewWebsite0.text(data[i].name);
-          brewWebsite0.attr("href", data[i].website_url);
-          brewWebsite0.attr("target", "_blank");
+            brewName0.text(data[i].name);
+            brewAddress0.text(data[i].street);
+            brewWebsite0.text(data[i].name);
+            brewWebsite0.attr("href", data[i].website_url);
+            brewWebsite0.attr("target", "_blank");
         } else if (i === 1) {
-          brewName1.text(data[i].name);
-          brewAddress1.text(data[i].street);
-          brewWebsite1.text(data[i].name);
-          brewWebsite1.attr("href", data[i].website_url);
-          brewWebsite1.attr("target", "_blank");
+            brewName1.text(data[i].name);
+            brewAddress1.text(data[i].street);
+            brewWebsite1.text(data[i].name);
+            brewWebsite1.attr("href", data[i].website_url);
+            brewWebsite1.attr("target", "_blank");
         } else if (i === 2) {
-          brewName2.text(data[i].name);
-          brewAddress2.text(data[i].street);
-          brewWebsite2.text(data[i].name);
-          brewWebsite2.attr("href", data[i].website_url);
-          brewWebsite2.attr("target", "_blank");
+            brewName2.text(data[i].name);
+            brewAddress2.text(data[i].street);
+            brewWebsite2.text(data[i].name);
+            brewWebsite2.attr("href", data[i].website_url);
+            brewWebsite2.attr("target", "_blank");
         }
-      }
-    });
-  saveTraveler();
+    }
+});
+saveTraveler();
+    }
 }
 
 var ticketApiKey = "AGWa5vWEgQZJJbVa9ZHcAxkl7H76w1f4";

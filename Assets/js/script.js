@@ -115,6 +115,13 @@ function requestEvents() {
     .then(function (data) {
       console.log(data);
 
+      // filtered for creating date range window
+      var startResults = data._embedded.events.filter((event) => {
+
+        return event.dates.start.localDate >= dateStart && event.dates.start.localDate <= dateEnd
+      })
+      // console.log(startResults)
+
       // first event
       for (i = 0; i < 4; i++) {
         var mainEvent0 = data._embedded.events[i].name;

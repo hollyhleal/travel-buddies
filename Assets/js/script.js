@@ -12,8 +12,10 @@ var brewWebsite1 = $("#brewWebsite1");
 var brewWebsite2 = $("#brewWebsite2");
 var storedTraveler = [];
 
+//Add event listener to go button
 goBtn.on("click", requestBreweries);
 
+//Push storedTravInfo object into storedTraveler array. Use JSON.stringify to turn array into a string for local storage.
 function saveTraveler() {
   var travName = $("#typeName").val();
   var travDestination = $("#typeDestination").val();
@@ -27,6 +29,7 @@ function saveTraveler() {
 
 displayToast();
 
+//Get previous user and destinations from localStorage to display using a toast. Display the most recent traveler and destination by targeting the array length - 1.
 function displayToast() {
   if (localStorage.getItem("history") === null) {
     $("#toastDisplay").removeClass("show");
@@ -41,6 +44,7 @@ function displayToast() {
   }
 }
 
+//Utilize the BreweryDB API to access breweries by city and display 3 of the options from the returned array onto cards for the user.
 function requestBreweries() {
   loginPage.addClass("hide");
   appPage.removeClass("hide");
@@ -133,14 +137,4 @@ function requestEvents() {
 
       // document.getElementById("").addEventListener("click", purchaseURL);
     });
-}
-
-const toastTrigger = document.getElementById("liveToastBtn");
-const toastLiveExample = document.getElementById("liveToast");
-if (toastTrigger) {
-  toastTrigger.addEventListener("click", () => {
-    const toast = new bootstrap.Toast(toastLiveExample);
-
-    toast.show();
-  });
 }

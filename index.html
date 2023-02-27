@@ -23,7 +23,7 @@
     <div class="container">
       <div class="login-page">
         <h2>The Most Tubular Way to Plan Your Vacay</h2>
-        <!-- Button trigger modal -->
+        <!-- Start button to trigger modal -->
         <button
           type="button"
           class="btn btn-primary col"
@@ -109,12 +109,12 @@
           </div>
         </div>
       </div>
-      <!-- app page containing divs with cards for each api -->
+      <!-- Main page containing API 1 and API 2 -->
       <div class="app-page row hide">
-        <div class="api-1 col-3">
+        <!-- Brewery DB API -->
+        <div class="api-1 col-lg-3 col-md-4 col-sm-12">
           <h4>Grab a drink!</h4>
-          <div class="card mb-3" style="width: 18rem">
-            <!-- <img src="..." class="card-img-top" alt="..." /> -->
+          <div class="card mb-3">
             <div class="card-body">
               <h5 id="brewName0" class="card-title"></h5>
             </div>
@@ -125,8 +125,7 @@
               <a id="brewWebsite0" class="card-link"></a>
             </div>
           </div>
-          <div class="card mb-3" style="width: 18rem">
-            <!-- <img src="..." class="card-img-top" alt="..." /> -->
+          <div class="card mb-3">
             <div class="card-body">
               <h5 id="brewName1" class="card-title"></h5>
             </div>
@@ -137,8 +136,7 @@
               <a id="brewWebsite1" class="card-link"></a>
             </div>
           </div>
-          <div class="card mb-3" style="width: 18rem">
-            <!-- <img src="..." class="card-img-top" alt="..." /> -->
+          <div class="card mb-3">
             <div class="card-body">
               <h5 id="brewName2" class="card-title"></h5>
             </div>
@@ -151,11 +149,11 @@
           </div>
         </div>
         
-        <!-- start of ticketmaster api html-->
-        <div class="api-2 col-9">
+        <!-- Ticketmaster API -->
+        <div class="api-2 col-lg-9 col-md-8 col-sm-12">
             <h4>Attend an event!</h4>
             <div class="row justify-content-between">
-              <div class="card" style="width: 18rem">
+              <div class="card mb-3">
                 <div class="card-body" id="events">
                   <h5 class="list-group-item-heading" id="event0"></h5>
                   <p class="list-group-item-text" id="date0"></p>
@@ -164,7 +162,7 @@
                 </div>
               </div>
             
-          <div class="card" style="width: 18rem">
+          <div class="card mb-3">
             <div class="card-body" id="events">
               <h5 class="list-group-item-heading" id="event1"></h5>
               <p class="list-group-item-text" id="date1"></p>
@@ -173,7 +171,7 @@
             </div>
           </div>
   
-          <div class="card" style="width: 18rem">
+          <div class="card mb-3">
             <div class="card-body" id="events">
               <h5 class="list-group-item-heading" id="event2"></h5>
               <p class="list-group-item-text" id="date2"></p>
@@ -185,10 +183,7 @@
       </div>
   
   </div>
-
-<!-- event card end  -->
-
-  <!-- footer start  -->
+  <!-- Footer -->
   <footer>
     <p>Brewery recommendations from <a href="https://www.openbrewerydb.org/">Open Brewery DB</a>.</br>
       Event recommendations from <a href="https://developer.ticketmaster.com/">Ticketmaster</a>.</p>

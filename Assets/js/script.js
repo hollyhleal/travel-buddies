@@ -61,19 +61,19 @@ function requestBreweries() {
         if (i === 0) {
           brewName0.text(data[i].name);
           brewAddress0.text(data[i].street);
-          brewWebsite0.text(data[i].website_url);
+          brewWebsite0.text(data[i].name);
           brewWebsite0.attr("href", data[i].website_url);
           brewWebsite0.attr("target", "_blank");
         } else if (i === 1) {
           brewName1.text(data[i].name);
           brewAddress1.text(data[i].street);
-          brewWebsite1.text(data[i].website_url);
+          brewWebsite1.text(data[i].name);
           brewWebsite1.attr("href", data[i].website_url);
           brewWebsite1.attr("target", "_blank");
         } else if (i === 2) {
           brewName2.text(data[i].name);
           brewAddress2.text(data[i].street);
-          brewWebsite2.text(data[i].website_url);
+          brewWebsite2.text(data[i].name);
           brewWebsite2.attr("href", data[i].website_url);
           brewWebsite2.attr("target", "_blank");
         }

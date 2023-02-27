@@ -17,11 +17,11 @@ goBtn.on("click", requestBreweries);
 
 function modalInput() {
   var travName = $("#typeName").val();
-  // var travEmail = $("#typeEmail").val();
+  var travEmail = $("#typeEmail").val();
   var travDestination = $("#typeDestination").val();
-  // var travDateStart = $("#startDate").val();
-  // var travDateEnd = $("#endDate").val();
-  // console.log(travName, travEmail, travDestination, travDateStart, travDateEnd);
+  var travDateStart = $("#startDate").val();
+  var travDateEnd = $("#endDate").val();
+  console.log(travName, travEmail, travDestination, travDateStart, travDateEnd);
 }
 
 function requestBreweries() {
@@ -63,28 +63,27 @@ function requestBreweries() {
       }
     });
 }
-//ticketAPI from ticketmaster
-var ticketApiKey = "AGWa5vWEgQZJJbVa9ZHcAxkl7H76w1f4";
 
-//event listener for the Lets go button 
+var ticketApiKey = "AGWa5vWEgQZJJbVa9ZHcAxkl7H76w1f4";
 goBtn.on("click", requestEvents);
 
-//this function will fetch the parameters necessary for the opage to display
 function requestEvents() {
   var cityId = $("#typeDestination").val();
   var dateStart = $("#startDate").val();
+  // var newstartDate = dateStart.moment().format('YYYY-MM-DD');
   var dateEnd = $("#endDate").val();
   var ticketURL =
-
-    `https://app.ticketmaster.com/discovery/v2/events.json?apikey=AGWa5vWEgQZJJbVa9ZHcAxkl7H76w1f4&city=${cityId}&dateStart${dateStart}&dateEnd${dateEnd}`
-
-
-  // for dev view
+    "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US" +
+    "&city=" +
+    cityId +
+    "&eventdate_from=" +
+    dateStart +
+    "T00:00:00Z&apikey=" +
+    ticketApiKey;
   console.log(dateStart);
   console.log(dateEnd);
   console.log(ticketURL);
 
-  //this will fetch the ticketURL with the objects within 
   fetch(ticketURL)
     .then(function (response) {
       // console.log(response);
@@ -93,48 +92,27 @@ function requestEvents() {
     .then(function (data) {
       console.log(data);
 
-      //this loop will target and declare each variable 
-      for (i = 0; i < 3; i++) {
+      // first event
+      for (i = 0; i < 4; i++) {
         var mainEvent0 = data._embedded.events[i].name;
         // console.log(mainEvent0);
-        var maineventdate0 = data._embedded.events[1].dates.start.localDate;
+        var maineventdate0 = data._embedded.events[i].dates.start.localDate;
         // console.log(maineventdate0);
         var venue = data._embedded.events[i]._embedded.venues[0].name;
         // console.log(venue);
         var purchaseURL = data._embedded.events[i].url;
         // console.log(purchaseURL)
-        // var eventImg = data._embedded.events[i].images[0].url;
-        // console.log(eventImg)
 
-        //this will targert the variables and will display to html IDs
+        // using jquery to tie the variables.
         $("#event" + i).html(mainEvent0);
         $("#date" + i).html(maineventdate0);
         $("#venue" + i).html(venue);
-
-        //this will replace the url text and replace with a new string 
-        document.querySelector("#purchase-tickets" + i).value = purchaseURL
-        document.querySelector("#purchase-tickets" + i).innerHTML = `Click Here for more info`
-        var goBtn = $("#purchase-tickets" + i);
-        goBtn.on("click", openLink);
-
-
+        $("#purchase-tickets" + i).html(purchaseURL);
+        // console.log(mainEvent0);
+        // add date parameter to url (&=)
+        // var for date range
       }
 
+      // document.getElementById("").addEventListener("click", purchaseURL);
     });
-
-}
-// this function is to open the link and use a separate tab 
-function openLink(value) {
-  console.log(value.target.value)
-  window.open(value.target.value)
-}
-
-const toastTrigger = document.getElementById("liveToastBtn");
-const toastLiveExample = document.getElementById("liveToast");
-if (toastTrigger) {
-  toastTrigger.addEventListener("click", () => {
-    const toast = new bootstrap.Toast(toastLiveExample);
-
-    toast.show();
-  });
 }

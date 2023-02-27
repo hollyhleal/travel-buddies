@@ -11,17 +11,16 @@ var brewWebsite0 = $("#brewWebsite0");
 var brewWebsite1 = $("#brewWebsite1");
 var brewWebsite2 = $("#brewWebsite2");
 var storedTraveler = [];
-var storedTravInfo = {};
 
 goBtn.on("click", requestBreweries);
 
-function modalInput() {
+function saveTraveler() {
   var travName = $("#typeName").val();
-  var travEmail = $("#typeEmail").val();
+  // var travEmail = $("#typeEmail").val();
   var travDestination = $("#typeDestination").val();
-  var travDateStart = $("#startDate").val();
-  var travDateEnd = $("#endDate").val();
-  console.log(travName, travEmail, travDestination, travDateStart, travDateEnd);
+  // var travDateStart = $("#startDate").val();
+  // var travDateEnd = $("#endDate").val();
+  // console.log(travName, travEmail, travDestination, travDateStart, travDateEnd);
 }
 
 function requestBreweries() {
@@ -62,6 +61,7 @@ function requestBreweries() {
         }
       }
     });
+  saveTraveler();
 }
 
 var ticketApiKey = "AGWa5vWEgQZJJbVa9ZHcAxkl7H76w1f4";

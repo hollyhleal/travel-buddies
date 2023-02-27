@@ -32,7 +32,14 @@
         >
           Get Started!
         </button>
-
+<div id="toastDisplay" class="toast show position-absolute bottom-0 end-0" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <strong class="me-auto">Take another look, <span id="toastName"></span>.</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+<span id="toastDest"></span> looked like lots of fun!</div>
+        </div>
         <!-- Modal -->
         <div
           class="modal fade"
@@ -184,21 +191,7 @@
   </div>
 
 <!-- event card end  -->
-<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
 
-<div class="toast-container position-fixed bottom-0 end-0 p-3">
-  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header">
-      <img src="..." class="rounded me-2" alt="...">
-      <strong class="me-auto">Bootstrap</strong>
-      <small>11 mins ago</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      Hello, world! This is a toast message.
-    </div>
-  </div>
-</div>
   <!-- footer start  -->
   <footer></footer>
 

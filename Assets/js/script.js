@@ -13,7 +13,7 @@ var brewWebsite1 = $("#brewWebsite1");
 var brewWebsite2 = $("#brewWebsite2");
 var storedTraveler = [];
 
-//Add event listener to go button
+//Add event listener to go button to run requestBreweries()
 goBtn.on("click", requestBreweries);
 
 //Push storedTravInfo object into storedTraveler array. Use JSON.stringify to turn array into a string for local storage.
@@ -45,7 +45,7 @@ function displayToast() {
   }
 }
 
-//Utilize the BreweryDB API to access breweries by city and display 3 of the options from the returned array onto cards for the user.
+//Utilize the BreweryDB API to access breweries by city.
 function requestBreweries() {
   if (input.val() === "") {
     return;
@@ -65,6 +65,7 @@ function requestBreweries() {
         if (city === "") {
           return;
         }
+        //Iterate through the returned array and display 3 breweries for user.
         for (let i = 0; i < 3; i++) {
           if (i === 0) {
             brewName0.text(data[i].name);
@@ -91,79 +92,69 @@ function requestBreweries() {
   }
 }
 
-//event listener for the Lets go button
+//Add event listener to go button to run requestEvents()
 goBtn.on("click", requestEvents);
 
-//this function will fetch the parameters necessary for the opage to display
+//Utilize the Ticketmaster API to access events by city.
 function requestEvents() {
   var cityId = $("#typeDestination").val();
   var dateStart = $("#startDate").val();
   var dateEnd = $("#endDate").val();
 
-  var ticketURL =
-    `https://app.ticketmaster.com/discovery/v2/events.json?sort=date,asc&apikey=AGWa5vWEgQZJJbVa9ZHcAxkl7H76w1f4&&city=${cityId}`
-
-  // console.log(dateStart);
-  // console.log(dateEnd);
-  // console.log(ticketURL);
+  var ticketURL = `https://app.ticketmaster.com/discovery/v2/events.json?size=200&sort=date,asc&apikey=AGWa5vWEgQZJJbVa9ZHcAxkl7H76w1f4&&city=${cityId}`;
 
   fetch(ticketURL)
     .then(function (response) {
-      // console.log(response);
+      console.log(response);
       return response.json();
     })
     .then(function (data) {
       console.log(data);
 
-      // filtered for creating date range window
+      //Ticketmaster API was not returning events within date parameters as expected. Use Javascript filter() to obtain necessary data.
+      //Filter through returned array of events to target events within specified date range.
       var startResults = data._embedded.events.filter((event) => {
+        return (
+          event.dates.start.localDate >= dateStart &&
+          event.dates.start.localDate <= dateEnd
+        );
+      });
+      console.log(startResults);
 
-        return event.dates.start.localDate >= dateStart && event.dates.start.localDate <= dateEnd
-      })
-      // console.log(startResults)
-
+      //Display message in case of no events on specified dates.
       if (startResults.length === 0) {
         $("#event0").text("Sorry, no events found for those dates.");
         $("#event1").text("Sorry, no events found for those dates.");
         $("#event2").text("Sorry, no events found for those dates.");
-
       } else {
-
-        //this loop will target and declare each variable
+        //Iterate through filtered array and display 3 events for user.
         for (i = 0; i < 3; i++) {
-
-          var mainEvent0 = startResults[i].name
-          // console.log(mainEvent0);
+          var mainEvent0 = startResults[i].name;
 
           var maineventdate0 = startResults[i].dates.start.localDate;
-          // console.log(maineventdate0);
 
           var venue = startResults[i]._embedded.venues[0].name;
-          // console.log(venue);
 
-          var purchaseURL = startResults[i].url
-          // console.log(purchaseURL)
+          var purchaseURL = startResults[i].url;
 
-          //this will target the variables and will display to html IDs
           $("#event" + i).html(mainEvent0);
           $("#date" + i).html(maineventdate0);
           $("#venue" + i).html(venue);
 
-          //this will replace the url text with a new string
-          document.querySelector("#purchase-tickets" + i).value = purchaseURL
-          document.querySelector("#purchase-tickets" + i).innerHTML = `Click Here for more info`
+          //Replace url on button with "get tickets" string
+          document.querySelector("#purchase-tickets" + i).value = purchaseURL;
+          document.querySelector(
+            "#purchase-tickets" + i
+          ).innerHTML = `get tickets`;
           var goBtn = $("#purchase-tickets" + i);
           goBtn.on("click", openLink);
-
-
         }
       }
     });
-
 }
 
-// this function is to open the link and use a separate tab
+//Open event link in new tab.
 function openLink(value) {
-  console.log(value.target.value)
-  window.open(value.target.value)
+  console.log(value.target.value);
+  window.open(value.target.value);
 }

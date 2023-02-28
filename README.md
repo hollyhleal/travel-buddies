@@ -9,8 +9,6 @@ Below is a link to the deployed application along with a screenshot of the appli
 
 [https://hollyhleal.github.io/travel-buddy/](https://hollyhleal.github.io/travel-buddy/)
 
-## Screenshot/GIF:
+## Screenshot:
 
-<iframe src="https://drive.google.com/file/d/1Tu3D-yvFeyXe9p0c9-Zv17JTo01eCBGY/preview" width="640" height="480"></iframe>
-
-<!-- <img src="" alt="travel buddy gif"> -->
+<img src="./Assets/travel-buddy-screenshot.png" alt="travel buddy screenshot">

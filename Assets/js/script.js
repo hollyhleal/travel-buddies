@@ -145,7 +145,7 @@ function requestEvents() {
           document.querySelector("#purchase-tickets" + i).value = purchaseURL;
           document.querySelector(
             "#purchase-tickets" + i
-          ).innerHTML = `get tickets`;
+          ).innerHTML = `Get Tickets`;
           var goBtn = $("#purchase-tickets" + i);
           goBtn.on("click", openLink);
         }
